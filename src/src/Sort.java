@@ -4,7 +4,7 @@ public class Sort {
 
     public Sort() {
         this.coutMana = 10;
-        this.degats = 5;
+        this.degats = 10;
     }
 
     public Sort(int coutMana, int degats) {
