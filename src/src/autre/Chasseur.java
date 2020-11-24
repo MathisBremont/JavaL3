@@ -1,3 +1,5 @@
+package autre;
+
 public class Chasseur extends Personnage {
 
     public Chasseur() {

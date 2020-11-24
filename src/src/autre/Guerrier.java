@@ -1,3 +1,5 @@
+package autre;
+
 public class Guerrier extends Personnage {
     Guerrier() {
         super(150, 30, 1, (Arme[])null);

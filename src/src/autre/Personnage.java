@@ -1,3 +1,4 @@
+package autre;
 public abstract class Personnage {
     private double ptsDeVie;
     private int mana;
@@ -50,7 +51,7 @@ public abstract class Personnage {
                 }
 
 
-            //CAS PAS BOUCLIER COUP CRITIQUE
+                //CAS PAS BOUCLIER COUP CRITIQUE
             }else{
 
                 if(personnage.getPtsDeVie()-degatsSort*2<0){
@@ -74,7 +75,7 @@ public abstract class Personnage {
                     personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort+bouclier.getProtection());
                 }
 
-            //PAS BOUCLIER PAS COUP CRITIQUE
+                //PAS BOUCLIER PAS COUP CRITIQUE
             }else{
                 if(personnage.getPtsDeVie()-degatsSort<0){
                     personnage.setPtsDeVie(0);
