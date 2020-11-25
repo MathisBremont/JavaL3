@@ -1,3 +1,5 @@
+package autre;
+
 public class Sort {
     private int coutMana;
     private int degats;

@@ -1,3 +1,5 @@
+package autre;
+
 public class Bouclier extends Arme {
 
     private int protection;

@@ -1,3 +1,5 @@
+package autre;
+
 public class Arc extends Arme{
 
     private int nbFleches;

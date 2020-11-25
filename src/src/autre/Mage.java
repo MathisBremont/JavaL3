@@ -1,3 +1,5 @@
+package autre;
+
 public class Mage extends Personnage {
 
     private Sort sort = new Sort(15,20);
