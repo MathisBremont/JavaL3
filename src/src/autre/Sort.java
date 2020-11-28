@@ -29,4 +29,8 @@ public class Sort {
     public void setDegats(int degats) {
         this.degats = degats;
     }
+
+    public String toString(){
+        return String.valueOf(this.coutMana)+" "+String.valueOf(this.degats)+" ";
+    }
 }
