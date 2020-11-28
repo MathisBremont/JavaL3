@@ -1,14 +1,20 @@
 package autre;
-public abstract class Personnage {
+
+import com.sun.jdi.DoubleValue;
+import java.awt.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public abstract class Personnage implements Serializable {
     private double ptsDeVie;
     private int mana;
     private int niveau;
-    private Arme[] listeArmes;
+    private ArrayList<Arme> listeArmes;
 
-    Personnage() {
-    }
-
-    Personnage(int ptsDeVie, int mana, int niveau, Arme[] listeArmes) {
+    Personnage(double ptsDeVie, int mana, int niveau, ArrayList<Arme> listeArmes) {
         this.ptsDeVie = ptsDeVie;
         this.mana = mana;
         this.niveau = niveau;
@@ -19,38 +25,29 @@ public abstract class Personnage {
         double temp = Math.random() * 10.0;
         //UNE CHANCE SUR 10 DE COUP CRITIQUE
         Sort sort = new Sort();
-        Bouclier bouclier = null;
+
         int degatsSort=sort.getDegats() + 2*(this.getNiveau()-1);
-
         //VERIF BOUCLIER
-        boolean aUnBouclier=false;
-        int rangBouclier=0;
-        for(int i=0;i<personnage.getListeArmes().length;i++){
-            if(personnage.getListeArmes()[i] instanceof Bouclier){
-                aUnBouclier=true;
-                rangBouclier=i;
-
-                bouclier = new Bouclier((Bouclier) personnage.getListeArmes()[i]);
-
-            }
+        boolean aUnBouclier=personnage.rangBouclier()>=0;
+        Bouclier bouclier = new Bouclier();
+        if(aUnBouclier){
+            bouclier=(Bouclier)personnage.getListeArmes().get(personnage.rangBouclier());
         }
 
         //MANA PERDU
         this.setMana(this.getMana() - sort.getCoutMana());
-
         if (temp <= 1.0) {
-            //CAS COUP CRITIQUE
-            System.out.println("COUP CRITIQUE !");
-
             //CAS BOUCLIER COUP CRITIQUE
             if (aUnBouclier){
                 if(degatsSort*2-bouclier.getProtection()<=0){
                     System.out.println("DEGATS BLOQUES");
                 }else{
-                    personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort*2+bouclier.getProtection());
+                    if(personnage.getPtsDeVie()-degatsSort*2<0){
+                        personnage.setPtsDeVie(0);
+                    }else{
+                        personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort*2+bouclier.getProtection());
+                    }
                 }
-
-
                 //CAS PAS BOUCLIER COUP CRITIQUE
             }else{
 
@@ -59,22 +56,19 @@ public abstract class Personnage {
                 }else{
                     personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort*2);
                 }
-
             }
-
         } else {
-            //CAS NORMAL
-
-
-
             //CAS BOUCLIER PAS COUP CRITIQUE
             if(aUnBouclier){
                 if(degatsSort-bouclier.getProtection()<=0){
                     System.out.println("DEGATS BLOQUES");
                 }else{
-                    personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort+bouclier.getProtection());
+                    if(personnage.getPtsDeVie()-degatsSort<0){
+                        personnage.setPtsDeVie(0);
+                    }else{
+                        personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort+bouclier.getProtection());
+                    }
                 }
-
                 //PAS BOUCLIER PAS COUP CRITIQUE
             }else{
                 if(personnage.getPtsDeVie()-degatsSort<0){
@@ -83,8 +77,38 @@ public abstract class Personnage {
                     personnage.setPtsDeVie(personnage.getPtsDeVie() - degatsSort);
                 }
             }
-
         }
+    }
+
+
+    int rangBouclier(){
+        int temp=-1;
+        for(int i=0;i<this.getListeArmes().size();i++){
+            if(this.getListeArmes().get(i) instanceof Bouclier){
+                temp=i;
+            }
+        }
+        return temp;
+    }
+
+    int rangEpee(){
+        int temp=-1;
+        for(int i=0;i<this.getListeArmes().size();i++){
+            if(this.getListeArmes().get(i) instanceof Epee){
+                temp=i;
+            }
+        }
+        return temp;
+    }
+
+    int rangArc(){
+        int temp=-1;
+        for(int i=0;i<this.getListeArmes().size();i++){
+            if(this.getListeArmes().get(i) instanceof Arc){
+                temp=i;
+            }
+        }
+        return temp;
     }
 
     public abstract void attaqueSpeciale(Personnage personnage);
@@ -113,11 +137,16 @@ public abstract class Personnage {
         this.niveau = niveau;
     }
 
-    public Arme[] getListeArmes() {
+    public ArrayList<Arme> getListeArmes() {
         return this.listeArmes;
     }
 
-    public void setListeArmes(Arme[] listeArmes) {
+    public void setListeArmes(ArrayList<Arme> listeArmes) {
         this.listeArmes = listeArmes;
+    }
+
+    public  String toString() {
+        StringBuffer sb =  new StringBuffer() ;
+        return sb.append(this.ptsDeVie).append(" ").append(this.mana).append(" ").append(this.niveau).append(" ").append(this.listeArmes).toString();
     }
 }
