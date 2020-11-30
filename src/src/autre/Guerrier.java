@@ -3,7 +3,7 @@ package autre;
 import java.util.ArrayList;
 
 public class Guerrier extends Personnage {
-    Guerrier() {
+    public Guerrier() {
         super(150.0, 30, 1, (ArrayList<Arme>)null);
         ArrayList listeArmes = new ArrayList<Arme>();
         listeArmes.add(new Epee());

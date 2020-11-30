@@ -1,22 +1,24 @@
 package view;
 
-import autre.Partie;
+import autre.*;
 import constante.Constante;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.InfoFichierSauvegarde;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class ChoixPersonnageController {
@@ -51,42 +53,12 @@ public class ChoixPersonnageController {
     @FXML
     private Label labErreurPerso;
 
-    private int choixMage;
-    private int choixChasseur;
-    private int choixGuerrier;
+    //1 = mage, 2 = guerrier, 3 = chasseur
+    private int choixPerso;
+
     private Partie partie;
+    private  InfoFichierSauvegarde infoFichierSauvegarde;
 
-    public int getChoixMage() {
-        return choixMage;
-    }
-
-    public int getChoixChasseur() {
-        return choixChasseur;
-    }
-
-    public int getChoixGuerrier() {
-        return choixGuerrier;
-    }
-
-    public Partie getPartie() {
-        return partie;
-    }
-
-    public void setChoixMage(int choixMage) {
-        this.choixMage = choixMage;
-    }
-
-    public void setChoixChasseur(int choixChasseur) {
-        this.choixChasseur = choixChasseur;
-    }
-
-    public void setChoixGuerrier(int choixGuerrier) {
-        this.choixGuerrier = choixGuerrier;
-    }
-
-    public void setPartie(Partie partie){
-        this.partie = partie;
-    }
 
     public void initialize() throws MalformedURLException {
         File fileArcher = new File(Constante.CHEMIN_IMAGES +"archer.png");
@@ -104,9 +76,8 @@ public class ChoixPersonnageController {
         this.imgChasseur.setImage(imageArcher);
         this.imgGuerrier.setImage(imageGuerrier);
         this.imgMage.setImage(imageMage);
-        this.choixMage = 0;
-        this.choixChasseur = 0;
-        this.choixGuerrier = 0;
+        this.choixPerso = 0;
+
         this.labErreurNom.setText("");
         this.labErreurPerso.setText("");
     }
@@ -115,32 +86,29 @@ public class ChoixPersonnageController {
 
     @FXML
     public void choixPersonnageMage(ActionEvent event) throws MalformedURLException {
-        this.choixMage = 1;
-        this.choixChasseur = 0;
-        this.choixGuerrier = 0;
-        System.out.println("mage = " + this.choixMage + ", chasseur = " + this.choixChasseur + ", guerrier = " + this.choixGuerrier);
+        this.choixPerso = 1;
     }
 
     @FXML
     public void choixPersonnageChasseur(ActionEvent event){
-        this.choixMage = 0;
-        this.choixChasseur = 1;
-        this.choixGuerrier = 0;
-        System.out.println("mage = " + this.choixMage + ", chasseur = " + this.choixChasseur + ", guerrier = " + this.choixGuerrier);
+        this.choixPerso = 2;
     }
 
     @FXML
     public void choixPersonnageGuerrier(ActionEvent event){
-        this.choixMage = 0;
-        this.choixChasseur = 0;
-        this.choixGuerrier = 1;
-        System.out.println("mage = " + this.choixMage + ", chasseur = " + this.choixChasseur + ", guerrier = " + this.choixGuerrier);
+        this.choixPerso = 3;
     }
 
+    //On vérifie que les champs ont été saisi correctement
+    //On valide le choix du personnage
+    //Et on sauvegarde les informations du joueur dans un fichier
     @FXML
     public void validerChoixPerso() throws Exception {
         int verif = 0;
+        //regex pseudo composé de lettre uniquement
         Boolean valeur = this.nomJoueur.getText().matches("^[a-zA-Z]*$");
+
+        //vérifie pesudo correct
         if(this.nomJoueur.getText().equals("") || this.nomJoueur.getText() == null || valeur == false){
             this.labErreurNom.setText("Saisissez un nom uniquement composé de lettres");
             verif +=1;
@@ -148,8 +116,8 @@ public class ChoixPersonnageController {
             labErreurNom.setText("");
         }
 
-
-        if(this.choixMage==0 && this.choixGuerrier == 0 && this.choixChasseur ==0){
+        //Vérifie que le joueur a bien choisi un type de personnage
+        if(this.choixPerso != 1 && this.choixPerso !=2 && this.choixPerso!=3){
             labErreurPerso.setText("Vous devez sélectionner un personnage à jouer");
             verif+=1;
         }
@@ -157,22 +125,64 @@ public class ChoixPersonnageController {
             labErreurPerso.setText("");
         }
 
+        //Si les champs au dessus sont bons, on enregistre le personnage choisi
         if (verif==0){
             try {
                 DateFormat format = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
                 Date date = new Date();
-                FileWriter lu = new FileWriter(Constante.CHEMIN_SAUVEGARDES + this.nomJoueur.getText() + "_" + format.format(date) + ".txt");
+
+                String titreFichierSauvegarde = this.nomJoueur.getText() + "_" + format.format(date);
+
+                FileWriter lu = new FileWriter(Constante.CHEMIN_SAUVEGARDES + titreFichierSauvegarde + ".txt");
                 BufferedWriter out = new BufferedWriter(lu);
-                out.write(this.nomJoueur.getText() + " " + this.choixMage + " " + this.choixChasseur + " " + this.choixGuerrier); //
+                infoFichierSauvegarde = null;
+                if(this.choixPerso == 1){
+                    Mage mage = new Mage();
+                    infoFichierSauvegarde = new InfoFichierSauvegarde(titreFichierSauvegarde,
+                            this.nomJoueur.getText(), this.choixPerso, mage.getPtsDeVie(),
+                            mage.getMana(), mage.getNiveau(), mage.getListeArmes());
+                }
+                if(this.choixPerso == 2){
+                    Chasseur chasseur = new Chasseur();
+                    infoFichierSauvegarde = new InfoFichierSauvegarde(titreFichierSauvegarde,
+                            this.nomJoueur.getText(), this.choixPerso, chasseur.getPtsDeVie(),
+                            chasseur.getMana(), chasseur.getNiveau(), chasseur.getListeArmes());
+                }
+                if(this.choixPerso == 3){
+                    Guerrier guerrier = new Guerrier();
+                    infoFichierSauvegarde = new InfoFichierSauvegarde(titreFichierSauvegarde,
+                            this.nomJoueur.getText(), this.choixPerso, guerrier.getPtsDeVie(),
+                            guerrier.getMana(), guerrier.getNiveau(), guerrier.getListeArmes());
+                }
+                out.write(infoFichierSauvegarde.toString());
                 out.close();
+
+                //On charge la page d'après
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
+
+                partie.setRoot(loader.load());
+
+                CombatController combatCtrl = loader.getController();
+
+
+                combatCtrl.setPartie(partie);
+
+                partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
+                partie.getPrimaryStage().show();
             }
             catch (IOException er) {;}
         }
 
-        ChoixSauvegardeController sauvegardeController = new ChoixSauvegardeController();
-        sauvegardeController.initialize();
-
-
-
     }
+
+
+    public Partie getPartie() {
+        return partie;
+    }
+
+    public void setPartie(Partie partie){
+        this.partie = partie;
+    }
+
 }
