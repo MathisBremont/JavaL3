@@ -37,7 +37,7 @@ public class Partie extends Application{
             LancementDuJeuController controllerRoot = loader.getController();
 
             controllerRoot.setPartie(this);
-            this.scene = new Scene(root, 1280, 640);
+            this.scene = new Scene(root, 1280, 720);
             this.primaryStage.setScene(scene);
             this.primaryStage.show();
 
@@ -72,10 +72,6 @@ public class Partie extends Application{
 
         Mage mage1 = new Mage(200, 200, 24, new ArrayList<Arme>());
         Mage mage2 = new Mage();
-        ArrayList<Arme> salut = new ArrayList<Arme>();
-        salut.add(new Arc());
-        salut.add(new Arc());
-        salut.add(new Arc());
         Chasseur chas1 = new Chasseur(2000000, 200, 24, new ArrayList<Arme>(Arrays.asList(new Arc())));
         Chasseur chas2 = new Chasseur();
 
@@ -96,6 +92,8 @@ public class Partie extends Application{
         System.out.println("Guerrier 2 :" + guer2.toString());
         System.out.println("Mage 2 : "+mage2.toString());
         System.out.println("Chas 2 : "+ chas2.toString());
+
+
 
     }
 

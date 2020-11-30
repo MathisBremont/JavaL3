@@ -31,22 +31,24 @@ public class LancementDuJeuController {
 
 
     public void initialize() throws MalformedURLException {
-        this.imgFond.setImage(new Image((new File(Constante.CHEMIN_IMAGES + "fond_accueil_2.jpg")).toURI().toURL().toString()));
+        this.imgFond.setImage(new Image((new File(Constante.CHEMIN_IMAGES + "fond_accueil12.png")).toURI().toURL().toString()));
     }
 
     @FXML
     private void lancementChoixPerso() throws IOException {
+
         partie.setRoot(new AnchorPane());
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Partie.class.getResource("/view/ChoixPersonnage.fxml"));
+        loader.setLocation(Partie.class.getResource("/view/ChoixSauvegarde.fxml"));
 
         partie.setRoot(loader.load());
 
-        ChoixPersonnageController choixPersoCtrl = new ChoixPersonnageController();
+        ChoixSauvegardeController choixSaveCtrl = loader.getController();
 
-        choixPersoCtrl.setPartie(partie);
 
-        partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1440, 720));
+        choixSaveCtrl.setPartie(partie);
+
+        partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
         partie.getPrimaryStage().show();
     }
 
