@@ -6,16 +6,13 @@ import java.util.Arrays;
 
 public class Chasseur extends Personnage {
 
-    public Chasseur() {
-        super(120.0, 30, 1, (ArrayList<Arme>)null);
-        ArrayList listeArmes = new ArrayList<Arme>();
-        listeArmes.add(new Arc());
-        this.setListeArmes(listeArmes);
+    public Chasseur(String nom) {
+        super(nom,120, 30, 1, new ArrayList<Arme>(Arrays.asList(new Arc())));
     }
 
 
-    public Chasseur(double ptsDeVie,int mana,int niveau,ArrayList<Arme> listeArmes){
-        super(ptsDeVie,mana,niveau,listeArmes);
+    public Chasseur(String nom,int ptsDeVie, int mana, int niveau, ArrayList<Arme> listeArmes){
+        super(nom,ptsDeVie,mana,niveau,listeArmes);
     }
 
 

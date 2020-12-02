@@ -37,9 +37,14 @@ public class AfficherPersoController {
         this.imgPersoDos.setImage(new Image((new File(Constante.CHEMIN_IMAGES + "archerDos.jpg")).toURI().toURL().toString()));
         this.ptsViePerso = new ProgressBar(1);
         this.ptsManaPerso = new ProgressBar(1);
-        this.lvlPerso.setText("1");
+        this.lvlPerso.setText(String.valueOf(this.partie.getPersonnage().getNiveau()));
         this.armePerso.setText("arc");
 
+    }
+
+
+    public AfficherPersoController(Partie partie){
+        this.partie=partie;
     }
 
     public Partie getPartie() {

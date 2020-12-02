@@ -1,19 +1,16 @@
 package autre;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Guerrier extends Personnage {
-    public Guerrier() {
-        super(150.0, 30, 1, (ArrayList<Arme>)null);
-        ArrayList listeArmes = new ArrayList<Arme>();
-        listeArmes.add(new Epee());
-        listeArmes.add(new Bouclier());
-        this.setListeArmes(listeArmes);
+    public Guerrier(String nom) {
+        super(nom,150, 30, 1, new ArrayList<Arme>(Arrays.asList(new Epee(),new Bouclier())));
     }
 
 
-    Guerrier(double ptsDeVie, int mana, int niveau,ArrayList<Arme> listeArmes) {
-        super(ptsDeVie, mana, niveau, listeArmes);
+    Guerrier(String nom,int ptsDeVie, int mana, int niveau, ArrayList<Arme> listeArmes) {
+        super(nom,ptsDeVie, mana, niveau, listeArmes);
     }
 
 

@@ -128,7 +128,49 @@ public class ChoixPersonnageController {
         //Si les champs au dessus sont bons, on enregistre le personnage choisi
         if (verif==0){
             try {
-                DateFormat format = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
+                if(this.choixPerso==1){
+                    File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+this.nomJoueur.getText());
+
+                    ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+                    partie.setPersonnage(new Mage(this.nomJoueur.getText()));
+                    System.out.println(new Mage(this.nomJoueur.getText()));
+                    oos.writeObject(partie.getPersonnage());
+                    oos.close();
+                }
+                if(this.choixPerso==2){
+                    File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+this.nomJoueur.getText());
+
+                    ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+                    partie.setPersonnage(new Chasseur(this.nomJoueur.getText()));
+                    oos.writeObject(partie.getPersonnage());
+                    oos.close();
+                }
+                if(this.choixPerso==3){
+                    File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+this.nomJoueur.getText());
+
+                    ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+                    partie.setPersonnage(new Guerrier(this.nomJoueur.getText()));
+                    oos.writeObject(partie.getPersonnage());
+                    oos.close();
+                }
+
+
+                CombatController combatController = new CombatController(partie);
+                combatController.launchCombatController(partie.getPrimaryStage());
+                //On charge la page d'après
+                /*FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
+
+                partie.setRoot(loader.load());
+
+                CombatController combatCtrl = loader.getController();
+
+
+                combatCtrl.setPartie(partie);
+
+                partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
+                partie.getPrimaryStage().show();*/
+                /*DateFormat format = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
                 Date date = new Date();
 
                 String titreFichierSauvegarde = this.nomJoueur.getText() + "_" + format.format(date);
@@ -170,8 +212,8 @@ public class ChoixPersonnageController {
 
                 partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
                 partie.getPrimaryStage().show();
-            }
-            catch (IOException er) {;}
+            */}
+            catch (Exception e) {;}
         }
 
     }
