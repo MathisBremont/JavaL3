@@ -1,0 +1,749 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21__Default_Changelist_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21__Default_Changelist_.xml	(revision a996648991cd2832b3294d6c39d40bbb0408d738)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21__Default_Changelist_.xml	(revision a996648991cd2832b3294d6c39d40bbb0408d738)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_25_11_2020_00_21_[Default_Changelist]" date="1606260133836" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 25/11/2020 00:21 [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21_[Default_Changelist]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21_[Default_Changelist]/shelved.patch	(revision a996648991cd2832b3294d6c39d40bbb0408d738)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_25_11_2020_00_21_[Default_Changelist]/shelved.patch	(revision a996648991cd2832b3294d6c39d40bbb0408d738)
+@@ -1,728 +0,0 @@
+-Index: src/src/Partie.java
+-===================================================================
+---- src/src/Partie.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/Partie.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-@@ -1,12 +0,0 @@
+--public class Partie {
+--    public Partie() {
+--    }
+--
+--    public static void main(String[] args) {
+--        Mage mage = new Mage();
+--        Guerrier guerrier = new Guerrier();
+--        mage.attaqueBasique(guerrier);
+--        System.out.println("Le guerrier n'a plus que " + guerrier.getPtsDeVie() + " pts de vies");
+--        System.out.println("Le mage n'a plus que " + mage.getMana() + " pts de mana");
+--    }
+--}
+-Index: src/src/view/ChoixSauvegarde.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/ChoixSauvegarde.fxml	(date 1606258262713)
+-+++ src/src/view/ChoixSauvegarde.fxml	(date 1606258262713)
+-@@ -0,0 +1,18 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+
+-+<?import javafx.scene.control.*?>
+-+<?import javafx.scene.layout.*?>
+-+
+-+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ChoixSauvegardeController">
+-+   <children>
+-+      <ScrollPane layoutX="221.0" layoutY="76.0" prefHeight="569.0" prefWidth="839.0">
+-+        <content>
+-+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="569.0" prefWidth="821.0">
+-+               <children>
+-+                  <VBox fx:id="vboxListeSauvegarde" prefHeight="569.0" prefWidth="821.0" />
+-+               </children>
+-+            </AnchorPane>
+-+        </content>
+-+      </ScrollPane>
+-+   </children>
+-+</AnchorPane>
+-Index: src/src/view/LancementDuJeu.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/LancementDuJeu.fxml	(date 1606234738410)
+-+++ src/src/view/LancementDuJeu.fxml	(date 1606234738410)
+-@@ -0,0 +1,40 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+
+-+<?import javafx.geometry.*?>
+-+<?import javafx.scene.control.*?>
+-+<?import javafx.scene.image.*?>
+-+<?import javafx.scene.layout.*?>
+-+
+-+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LancementDuJeuController">
+-+   <children>
+-+      <ImageView fx:id="imgFond" fitHeight="720.0" fitWidth="1280.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+-+      <VBox layoutX="590.0" layoutY="251.0">
+-+         <children>
+-+            <Button fx:id="btnJouerJeu" mnemonicParsing="false" onAction="#lancementChoixPerso" prefHeight="50.0" prefWidth="100.0" text="Jouer">
+-+               <VBox.margin>
+-+                  <Insets bottom="25.0" />
+-+               </VBox.margin></Button>
+-+            <Button fx:id="btnParametreJeu" mnemonicParsing="false" onAction="#choixParametre" prefHeight="50.0" prefWidth="100.0" text="Paramètres">
+-+               <VBox.margin>
+-+                  <Insets bottom="25.0" />
+-+               </VBox.margin>
+-+            </Button>
+-+            <Button fx:id="btnQuitterJeu" alignment="CENTER" mnemonicParsing="false" onAction="#quitterJeu" prefHeight="50.0" prefWidth="100.0" text="Quitter">
+-+               <VBox.margin>
+-+                  <Insets bottom="25.0" />
+-+               </VBox.margin></Button>
+-+         </children>
+-+      </VBox>
+-+      <GridPane layoutX="540.0" layoutY="318.0">
+-+        <columnConstraints>
+-+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+-+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+-+        </columnConstraints>
+-+        <rowConstraints>
+-+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-+        </rowConstraints>
+-+      </GridPane>
+-+   </children>
+-+</AnchorPane>
+-Index: src/src/view/LancementDuJeuController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/LancementDuJeuController.java	(date 1606234159890)
+-+++ src/src/view/LancementDuJeuController.java	(date 1606234159890)
+-@@ -0,0 +1,71 @@
+-+package view;
+-+
+-+import autre.Partie;
+-+import constante.Constante;
+-+import javafx.fxml.FXML;
+-+import javafx.fxml.FXMLLoader;
+-+import javafx.scene.Scene;
+-+import javafx.scene.control.Button;
+-+import javafx.scene.image.Image;
+-+import javafx.scene.image.ImageView;
+-+import javafx.scene.layout.AnchorPane;
+-+
+-+import java.io.File;
+-+import java.io.IOException;
+-+import java.net.MalformedURLException;
+-+
+-+public class LancementDuJeuController {
+-+    private Partie partie;
+-+
+-+    @FXML
+-+    private Button btnJouerJeu;
+-+
+-+    @FXML
+-+    private Button btnQuitterJeu;
+-+
+-+    @FXML
+-+    private Button btnParametreJeu;
+-+
+-+    @FXML
+-+    private ImageView imgFond;
+-+
+-+
+-+    public void initialize() throws MalformedURLException {
+-+        this.imgFond.setImage(new Image((new File(Constante.CHEMIN_IMAGES + "fond_accueil_2.jpg")).toURI().toURL().toString()));
+-+    }
+-+
+-+    @FXML
+-+    private void lancementChoixPerso() throws IOException {
+-+        partie.setRoot(new AnchorPane());
+-+        FXMLLoader loader = new FXMLLoader();
+-+        loader.setLocation(Partie.class.getResource("/view/ChoixPersonnage.fxml"));
+-+
+-+        partie.setRoot(loader.load());
+-+
+-+        ChoixPersonnageController choixPersoCtrl = new ChoixPersonnageController();
+-+
+-+        choixPersoCtrl.setPartie(partie);
+-+
+-+        partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1440, 720));
+-+        partie.getPrimaryStage().show();
+-+    }
+-+
+-+    @FXML
+-+    public void quitterJeu(){
+-+
+-+    }
+-+
+-+    @FXML
+-+    public void choixParametre(){
+-+
+-+    }
+-+
+-+    public Partie getPartie() {
+-+        return partie;
+-+    }
+-+
+-+    public void setPartie(Partie partie) {
+-+        this.partie = partie;
+-+    }
+-+
+-+}
+-Index: src/src/Mage.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Mage extends Personnage {\r\n    Mage() {\r\n        super(100, 100, 1, (Arme[])null);\r\n    }\r\n\r\n    public void attaqueBasique(Personnage personnage) {\r\n        double temp = Math.random() * 10.0D;\r\n        if (temp <= 1.0D) {\r\n            this.setMana(this.getMana() - 10);\r\n            personnage.setPtsDeVie(personnage.getPtsDeVie() - 20);\r\n        } else {\r\n            this.setMana(this.getMana() - 10);\r\n            personnage.setPtsDeVie(personnage.getPtsDeVie() - 10);\r\n        }\r\n\r\n    }\r\n\r\n    public void attaqueSpeciale(Personnage personnage) {\r\n    }\r\n}\r\n
+-===================================================================
+---- src/src/Mage.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Mage.java	(date 1606209005610)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Mage extends Personnage {
+-     Mage() {
+-         super(100, 100, 1, (Arme[])null);
+-Index: src/src/constante/Constante.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/constante/Constante.java	(date 1606251313315)
+-+++ src/src/constante/Constante.java	(date 1606251313315)
+-@@ -0,0 +1,6 @@
+-+package constante;
+-+
+-+public class Constante {
+-+    public static final String CHEMIN_IMAGES = "ressources/image/";
+-+    public static final String CHEMIN_SAUVEGARDES = "ressources/sauvegardes/";
+-+}
+-Index: src/src/autre/Partie.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/autre/Partie.java	(date 1606234857884)
+-+++ src/src/autre/Partie.java	(date 1606234857884)
+-@@ -0,0 +1,77 @@
+-+package autre;
+-+
+-+import constante.Constante;
+-+import javafx.fxml.FXMLLoader;
+-+import javafx.scene.Scene;
+-+import javafx.scene.image.Image;
+-+import javafx.scene.layout.AnchorPane;
+-+import javafx.stage.Stage;
+-+import javafx.application.Application;
+-+import view.ChoixPersonnageController;
+-+import view.LancementDuJeuController;
+-+
+-+public class Partie extends Application{
+-+
+-+    private Stage primaryStage;
+-+    private AnchorPane root;
+-+    private Scene scene;
+-+
+-+    @Override
+-+    public void start(Stage primaryStage) {
+-+        try {
+-+            this.primaryStage = primaryStage;
+-+            this.primaryStage.setResizable(false);
+-+            this.primaryStage.setTitle("Le Seigneur Des Hameaux : La Bataille Pour La Terre Excentré");
+-+            this.primaryStage.getIcons().add(new Image("file:" +Constante.CHEMIN_IMAGES + "logo.png"));
+-+            this.root = new AnchorPane();
+-+            FXMLLoader loader = new FXMLLoader();
+-+            loader.setLocation(Partie.class.getResource("/view/LancementDuJeu.fxml"));
+-+
+-+            this.root = loader.load();
+-+
+-+            LancementDuJeuController controllerRoot = loader.getController();
+-+
+-+            controllerRoot.setPartie(this);
+-+            this.scene = new Scene(root, 1280, 640);
+-+            this.primaryStage.setScene(scene);
+-+            this.primaryStage.show();
+-+
+-+        } catch(Exception e) {
+-+            e.printStackTrace();
+-+        }
+-+    }
+-+
+-+
+-+    public static void main(String[] args) {
+-+        launch(args);
+-+        /*Mage mage = new Mage();
+-+        Guerrier guerrier = new Guerrier();
+-+        mage.attaqueBasique(guerrier);
+-+        System.out.println("Le guerrier n'a plus que " + guerrier.getPtsDeVie() + " pts de vies");
+-+        System.out.println("Le mage n'a plus que " + mage.getMana() + " pts de mana");*/
+-+    }
+-+
+-+    public Stage getPrimaryStage() {
+-+        return primaryStage;
+-+    }
+-+
+-+    public void setPrimaryStage(Stage primaryStage) {
+-+        this.primaryStage = primaryStage;
+-+    }
+-+
+-+    public AnchorPane getRoot() {
+-+        return root;
+-+    }
+-+
+-+    public void setRoot(AnchorPane root) {
+-+        this.root = root;
+-+    }
+-+
+-+    public Scene getScene() {
+-+        return scene;
+-+    }
+-+
+-+    public void setScene(Scene scene) {
+-+        this.scene = scene;
+-+    }
+-+}
+-Index: src/src/view/UneSauvegarde.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/UneSauvegarde.fxml	(date 1606258688245)
+-+++ src/src/view/UneSauvegarde.fxml	(date 1606258688245)
+-@@ -0,0 +1,10 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+
+-+<?import javafx.scene.control.*?>
+-+<?import javafx.scene.layout.*?>
+-+
+-+<AnchorPane prefHeight="23.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.UneSauvegarde">
+-+   <children>
+-+      <Button fx:id="btnSauvegarde" layoutY="-1.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="506.0" text="Button" />
+-+   </children>
+-+</AnchorPane>
+-Index: src/src/view/UneSauvegardeController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/UneSauvegardeController.java	(date 1606260035213)
+-+++ src/src/view/UneSauvegardeController.java	(date 1606260035213)
+-@@ -0,0 +1,11 @@
+-+package view;
+-+
+-+import javafx.fxml.FXML;
+-+import javafx.scene.control.Button;
+-+
+-+public class UneSauvegardeController {
+-+    @FXML
+-+    private Button btnSauvegarde;
+-+
+-+
+-+}
+-Index: src/src/Arme.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public abstract class Arme {\r\n    private int degats;\r\n\r\n    public Arme() {\r\n    }\r\n}
+-===================================================================
+---- src/src/Arme.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Arme.java	(date 1606209005566)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public abstract class Arme {
+-     private int degats;
+- 
+-Index: src/src/view/ChoixPersonnage.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/ChoixPersonnage.fxml	(date 1606242636663)
+-+++ src/src/view/ChoixPersonnage.fxml	(date 1606242636663)
+-@@ -0,0 +1,58 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+
+-+<?import javafx.geometry.*?>
+-+<?import javafx.scene.control.*?>
+-+<?import javafx.scene.image.*?>
+-+<?import javafx.scene.layout.*?>
+-+
+-+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ChoixPersonnageController">
+-+   <children>
+-+      <GridPane alignment="CENTER" layoutX="296.0" layoutY="149.0" prefHeight="426.0" prefWidth="853.0">
+-+        <columnConstraints>
+-+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+-+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+-+            <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+-+        </columnConstraints>
+-+        <rowConstraints>
+-+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+-+            <RowConstraints minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+-+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+-+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-+        </rowConstraints>
+-+         <children>
+-+            <Button fx:id="btnMage" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#choixPersonnageMage" text="MAGE" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+-+               <opaqueInsets>
+-+                  <Insets />
+-+               </opaqueInsets></Button>
+-+            <Button fx:id="btnChasseur" mnemonicParsing="false" onAction="#choixPersonnageChasseur" text="CHASSEUR" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+-+            <Button fx:id="btnGuerrier" mnemonicParsing="false" onAction="#choixPersonnageGuerrier" text="GUERRIER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+-+            <Button fx:id="btnValiderChoixPerso" mnemonicParsing="false" onAction="#validerChoixPerso" text="VALIDER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+-+            <ImageView fx:id="imgMage" fitHeight="182.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+-+            <ImageView fx:id="imgChasseur" fitHeight="187.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+-+               <GridPane.margin>
+-+                  <Insets right="60.0" />
+-+               </GridPane.margin></ImageView>
+-+                  <ImageView fx:id="imgGuerrier" fitHeight="185.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+-+               <GridPane.margin>
+-+                  <Insets left="100.0" />
+-+               </GridPane.margin></ImageView>
+-+            <TextField fx:id="nomJoueur" prefHeight="15.0" prefWidth="283.0" GridPane.columnIndex="1">
+-+               <GridPane.margin>
+-+                  <Insets bottom="100.0" />
+-+               </GridPane.margin></TextField>
+-+            <Label text="Choisissez votre nom de joueur :" GridPane.halignment="CENTER">
+-+               <GridPane.margin>
+-+                  <Insets bottom="100.0" />
+-+               </GridPane.margin>
+-+            </Label>
+-+            <Label fx:id="labErreurNom" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="88.0" prefWidth="282.0" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+-+               <GridPane.margin>
+-+                  <Insets bottom="100.0" />
+-+               </GridPane.margin>
+-+            </Label>
+-+            <Label fx:id="labErreurPerso" prefHeight="49.0" prefWidth="283.0" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+-+         </children>
+-+      </GridPane>
+-+   </children>
+-+</AnchorPane>
+-Index: src/src/view/ChoixPersonnageController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/ChoixPersonnageController.java	(date 1606257195560)
+-+++ src/src/view/ChoixPersonnageController.java	(date 1606257195560)
+-@@ -0,0 +1,178 @@
+-+package view;
+-+
+-+import autre.Partie;
+-+import constante.Constante;
+-+import javafx.event.ActionEvent;
+-+import javafx.fxml.FXML;
+-+import javafx.scene.control.Button;
+-+import javafx.scene.control.Label;
+-+import javafx.scene.control.TextField;
+-+import javafx.scene.image.Image;
+-+import javafx.scene.image.ImageView;
+-+
+-+import java.io.BufferedWriter;
+-+import java.io.File;
+-+import java.io.FileWriter;
+-+import java.io.IOException;
+-+import java.net.MalformedURLException;
+-+import java.text.DateFormat;
+-+import java.text.SimpleDateFormat;
+-+import java.util.Date;
+-+
+-+public class ChoixPersonnageController {
+-+
+-+    @FXML
+-+    private ImageView imgMage;
+-+
+-+    @FXML
+-+    private ImageView imgChasseur;
+-+
+-+    @FXML
+-+    private ImageView imgGuerrier;
+-+
+-+    @FXML
+-+    private Button btnMage;
+-+
+-+    @FXML
+-+    private Button btnChasseur;
+-+
+-+    @FXML
+-+    private Button btnGuerrier;
+-+
+-+    @FXML
+-+    private Button btnValiderChoixPerso;
+-+
+-+    @FXML
+-+    private TextField nomJoueur;
+-+
+-+    @FXML
+-+    private Label labErreurNom;
+-+
+-+    @FXML
+-+    private Label labErreurPerso;
+-+
+-+    private int choixMage;
+-+    private int choixChasseur;
+-+    private int choixGuerrier;
+-+    private Partie partie;
+-+
+-+    public int getChoixMage() {
+-+        return choixMage;
+-+    }
+-+
+-+    public int getChoixChasseur() {
+-+        return choixChasseur;
+-+    }
+-+
+-+    public int getChoixGuerrier() {
+-+        return choixGuerrier;
+-+    }
+-+
+-+    public Partie getPartie() {
+-+        return partie;
+-+    }
+-+
+-+    public void setChoixMage(int choixMage) {
+-+        this.choixMage = choixMage;
+-+    }
+-+
+-+    public void setChoixChasseur(int choixChasseur) {
+-+        this.choixChasseur = choixChasseur;
+-+    }
+-+
+-+    public void setChoixGuerrier(int choixGuerrier) {
+-+        this.choixGuerrier = choixGuerrier;
+-+    }
+-+
+-+    public void setPartie(Partie partie){
+-+        this.partie = partie;
+-+    }
+-+
+-+    public void initialize() throws MalformedURLException {
+-+        File fileArcher = new File(Constante.CHEMIN_IMAGES +"archer.png");
+-+        File fileGuerrier = new File(Constante.CHEMIN_IMAGES + "guerrier.png");
+-+        File fileMage = new File(Constante.CHEMIN_IMAGES + "mage.png");
+-+
+-+        String localUrlArcher = fileArcher.toURI().toURL().toString();
+-+        String localUrlGuerrier = fileGuerrier.toURI().toURL().toString();
+-+        String localUrlMage = fileMage.toURI().toURL().toString();
+-+
+-+        Image imageArcher = new Image(localUrlArcher);
+-+        Image imageGuerrier = new Image(localUrlGuerrier);
+-+        Image imageMage = new Image(localUrlMage);
+-+
+-+        this.imgChasseur.setImage(imageArcher);
+-+        this.imgGuerrier.setImage(imageGuerrier);
+-+        this.imgMage.setImage(imageMage);
+-+        this.choixMage = 0;
+-+        this.choixChasseur = 0;
+-+        this.choixGuerrier = 0;
+-+        this.labErreurNom.setText("");
+-+        this.labErreurPerso.setText("");
+-+    }
+-+
+-+
+-+
+-+    @FXML
+-+    public void choixPersonnageMage(ActionEvent event) throws MalformedURLException {
+-+        this.choixMage = 1;
+-+        this.choixChasseur = 0;
+-+        this.choixGuerrier = 0;
+-+        System.out.println("mage = " + this.choixMage + ", chasseur = " + this.choixChasseur + ", guerrier = " + this.choixGuerrier);
+-+    }
+-+
+-+    @FXML
+-+    public void choixPersonnageChasseur(ActionEvent event){
+-+        this.choixMage = 0;
+-+        this.choixChasseur = 1;
+-+        this.choixGuerrier = 0;
+-+        System.out.println("mage = " + this.choixMage + ", chasseur = " + this.choixChasseur + ", guerrier = " + this.choixGuerrier);
+-+    }
+-+
+-+    @FXML
+-+    public void choixPersonnageGuerrier(ActionEvent event){
+-+        this.choixMage = 0;
+-+        this.choixChasseur = 0;
+-+        this.choixGuerrier = 1;
+-+        System.out.println("mage = " + this.choixMage + ", chasseur = " + this.choixChasseur + ", guerrier = " + this.choixGuerrier);
+-+    }
+-+
+-+    @FXML
+-+    public void validerChoixPerso() throws Exception {
+-+        int verif = 0;
+-+        Boolean valeur = this.nomJoueur.getText().matches("^[a-zA-Z]*$");
+-+        if(this.nomJoueur.getText().equals("") || this.nomJoueur.getText() == null || valeur == false){
+-+            this.labErreurNom.setText("Saisissez un nom uniquement composé de lettres");
+-+            verif +=1;
+-+        }else{
+-+            labErreurNom.setText("");
+-+        }
+-+
+-+
+-+        if(this.choixMage==0 && this.choixGuerrier == 0 && this.choixChasseur ==0){
+-+            labErreurPerso.setText("Vous devez sélectionner un personnage à jouer");
+-+            verif+=1;
+-+        }
+-+        else{
+-+            labErreurPerso.setText("");
+-+        }
+-+
+-+        if (verif==0){
+-+            try {
+-+                DateFormat format = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
+-+                Date date = new Date();
+-+                FileWriter lu = new FileWriter(Constante.CHEMIN_SAUVEGARDES + this.nomJoueur.getText() + "_" + format.format(date) + ".txt");
+-+                BufferedWriter out = new BufferedWriter(lu);
+-+                out.write(this.nomJoueur.getText() + " " + this.choixMage + " " + this.choixChasseur + " " + this.choixGuerrier); //
+-+                out.close();
+-+            }
+-+            catch (IOException er) {;}
+-+        }
+-+
+-+        ChoixSauvegardeController sauvegardeController = new ChoixSauvegardeController();
+-+        sauvegardeController.ajouterSauvegarde();
+-+
+-+
+-+
+-+    }
+-+}
+-Index: src/src/Arc.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Arc {\r\n    public Arc() {\r\n    }\r\n}
+-===================================================================
+---- src/src/Arc.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Arc.java	(date 1606209005536)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Arc {
+-     public Arc() {
+-     }
+-Index: src/src/Bouclier.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Bouclier {\r\n    public Bouclier() {\r\n    }\r\n}\r\n
+-===================================================================
+---- src/src/Bouclier.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Bouclier.java	(date 1606209005592)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Bouclier {
+-     public Bouclier() {
+-     }
+-Index: src/src/Guerrier.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Guerrier extends Personnage {\r\n    Guerrier() {\r\n        super(150, 60, 1, (Arme[])null);\r\n        this.setListeArmes(new Arme[]{new Epee()});\r\n    }\r\n\r\n    public void attaqueBasique(Personnage personnage) {\r\n    }\r\n\r\n    public void attaqueSpeciale(Personnage personnage) {\r\n    }\r\n}\r\n
+-===================================================================
+---- src/src/Guerrier.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Guerrier.java	(date 1606209005546)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Guerrier extends Personnage {
+-     Guerrier() {
+-         super(150, 60, 1, (Arme[])null);
+-Index: src/src/Chasseur.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Chasseur extends Personnage {\r\n    public Chasseur() {\r\n    }\r\n\r\n    public void attaqueBasique(Personnage personnage) {\r\n    }\r\n\r\n    public void attaqueSpeciale(Personnage personnage) {\r\n    }\r\n}\r\n
+-===================================================================
+---- src/src/Chasseur.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Chasseur.java	(date 1606209005556)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Chasseur extends Personnage {
+-     public Chasseur() {
+-     }
+-Index: src/src/Personnage.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public abstract class Personnage {\r\n    private int ptsDeVie;\r\n    private int mana;\r\n    private int niveau;\r\n    private Arme[] listeArmes;\r\n\r\n    Personnage() {\r\n    }\r\n\r\n    Personnage(int ptsDeVie, int mana, int niveau, Arme[] listeArmes) {\r\n        this.ptsDeVie = ptsDeVie;\r\n        this.mana = mana;\r\n        this.niveau = niveau;\r\n        this.listeArmes = listeArmes;\r\n    }\r\n\r\n    public abstract void attaqueBasique(Personnage var1);\r\n\r\n    public abstract void attaqueSpeciale(Personnage var1);\r\n\r\n    public int getPtsDeVie() {\r\n        return this.ptsDeVie;\r\n    }\r\n\r\n    public void setPtsDeVie(int ptsDeVie) {\r\n        this.ptsDeVie = ptsDeVie;\r\n    }\r\n\r\n    public int getMana() {\r\n        return this.mana;\r\n    }\r\n\r\n    public void setMana(int mana) {\r\n        this.mana = mana;\r\n    }\r\n\r\n    public int getNiveau() {\r\n        return this.niveau;\r\n    }\r\n\r\n    public void setNiveau(int niveau) {\r\n        this.niveau = niveau;\r\n    }\r\n\r\n    public Arme[] getListeArmes() {\r\n        return this.listeArmes;\r\n    }\r\n\r\n    public void setListeArmes(Arme[] listeArmes) {\r\n        this.listeArmes = listeArmes;\r\n    }\r\n}\r\n
+-===================================================================
+---- src/src/Personnage.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Personnage.java	(date 1606209005583)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public abstract class Personnage {
+-     private int ptsDeVie;
+-     private int mana;
+-Index: src/src/Epee.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Epee extends Arme {\r\n    public Epee() {\r\n    }\r\n}\r\n
+-===================================================================
+---- src/src/Epee.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Epee.java	(date 1606209005526)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Epee extends Arme {
+-     public Epee() {
+-     }
+-Index: src/src/Sort.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>public class Sort {\r\n    private int coutMana;\r\n    private int degats;\r\n\r\n    public Sort() {\r\n        this.coutMana = 10;\r\n        this.degats = 5;\r\n    }\r\n\r\n    public Sort(int coutMana, int degats) {\r\n        this.coutMana = coutMana;\r\n        this.degats = degats;\r\n    }\r\n\r\n    public int getCoutMana() {\r\n        return this.coutMana;\r\n    }\r\n\r\n    public void setCoutMana(int coutMana) {\r\n        this.coutMana = coutMana;\r\n    }\r\n\r\n    public int getDegats() {\r\n        return this.degats;\r\n    }\r\n\r\n    public void setDegats(int degats) {\r\n        this.degats = degats;\r\n    }\r\n}
+-===================================================================
+---- src/src/Sort.java	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src/autre/Sort.java	(date 1606209005574)
+-@@ -1,3 +1,5 @@
+-+package autre;
+-+
+- public class Sort {
+-     private int coutMana;
+-     private int degats;
+-Index: src/src/view/ChoixSauvegardeController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src/view/ChoixSauvegardeController.java	(date 1606257258171)
+-+++ src/src/view/ChoixSauvegardeController.java	(date 1606257258171)
+-@@ -0,0 +1,28 @@
+-+package view;
+-+
+-+import constante.Constante;
+-+import javafx.fxml.FXML;
+-+import javafx.scene.layout.VBox;
+-+
+-+import java.awt.*;
+-+import java.io.File;
+-+import java.io.FileNotFoundException;
+-+
+-+public class ChoixSauvegardeController {
+-+    @FXML
+-+    private VBox vboxListeSauvegarde;
+-+
+-+    public void initialize() throws Exception {
+-+        int nbSauvegarde = compterNbSauvegarde(Constante.CHEMIN_SAUVEGARDES);
+-+        for(int i=0; i<nbSauvegarde; i++){
+-+            Button btnSauvegarde;
+-+        }
+-+    }
+-+    public int compterNbSauvegarde (String parent) throws Exception {
+-+        File file = new File (parent);
+-+
+-+        if (!file.exists ())
+-+            throw new FileNotFoundException();
+-+        return file.list ().length;
+-+    }
+-+}
+-Index: src/src.iml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/src.iml	(revision b1169cbebe5bd6b960c2f8c531d47e249f5fd662)
+-+++ src/src.iml	(date 1606144261840)
+-@@ -7,5 +7,6 @@
+-     </content>
+-     <orderEntry type="inheritedJdk" />
+-     <orderEntry type="sourceFolder" forTests="false" />
+-+    <orderEntry type="library" name="lib" level="application" />
+-   </component>
+- </module>
+-\ No newline at end of file
