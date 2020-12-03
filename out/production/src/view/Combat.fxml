@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CombatController">
+   <children>
+      <GridPane layoutX="344.0" prefHeight="720.0" prefWidth="936.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="691.0" minWidth="10.0" prefWidth="399.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="691.0" minWidth="10.0" prefWidth="152.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="501.0" minWidth="10.0" prefWidth="385.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="554.0" minHeight="10.0" prefHeight="151.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="646.0" minHeight="10.0" prefHeight="415.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="646.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0" GridPane.columnIndex="2">
+                <fx:include maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0" source="AfficherAdversaire.fxml" />
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0" GridPane.rowIndex="2">
+               <children>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="400.0">
+                      <fx:include fx:id="AfficherPersoConfig" source="AfficherPerso.fxml" />
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Button fx:id="btnAttaquePhysique" mnemonicParsing="false" text="Attaque Physique">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnAttaqueSort" mnemonicParsing="false" text="Attaque Magique">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="btnPasserTour" mnemonicParsing="false" text="Passer son tour" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <VBox alignment="TOP_CENTER" layoutX="7.0" prefHeight="720.0" prefWidth="330.0">
+         <children>
+            <Label fx:id="lblHistoriqueCombat" text="Historique du combat">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="682.0" prefWidth="330.0">
+               <children>
+                  <TextArea fx:id="txtArearHistoriqueCombat" layoutX="-8.0" prefHeight="675.0" prefWidth="337.0" text="j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;j&#10;k&#10;&#10;k&#10;k&#10;k&#10;k&#10;k&#10;k&#10;j&#10;&#10;j&#10;u&#10;u&#10;u&#10;u&#10;t&#10;t&#10;&#10;t*j&#10;tj&#10;tj&#10;tj&#10;tj&#10;&#10;tj&#10;t&#10;j&#10;tj&#10;t*&#10;jtj&#10;t*j&#10;tj&#10;t*&#10;tj*j&#10;tj*&#10;t*" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
