@@ -8,12 +8,12 @@ public class InfoFichierSauvegarde {
     private String titre;
     private String pseudo;
     private int typePerso;
-    private Double ptsVie;
+    private int ptsVie;
     private int mana;
     private int niveau;
     private ArrayList<Arme> listeArme;
 
-    public InfoFichierSauvegarde(String titre, String pseudo, int typePerso, Double ptsVie, int mana, int niveau, ArrayList<Arme> listeArme) {
+    public InfoFichierSauvegarde(String titre, String pseudo, int typePerso, int ptsVie, int mana, int niveau, ArrayList<Arme> listeArme) {
         this.titre = titre;
         this.pseudo = pseudo;
         this.typePerso = typePerso;
@@ -55,11 +55,11 @@ public class InfoFichierSauvegarde {
         this.typePerso = typePerso;
     }
 
-    public Double getPtsVie() {
+    public int getPtsVie() {
         return ptsVie;
     }
 
-    public void setPtsVie(Double ptsVie) {
+    public void setPtsVie(int ptsVie) {
         this.ptsVie = ptsVie;
     }
 

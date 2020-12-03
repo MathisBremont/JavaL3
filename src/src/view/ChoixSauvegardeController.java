@@ -1,7 +1,6 @@
 package view;
 
-import autre.Arme;
-import autre.Partie;
+import autre.*;
 import constante.Constante;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,24 +58,18 @@ public class ChoixSauvegardeController {
     }
 
 
-    public void lancerPartie1() throws IOException {
+    public void lancerPartie1() throws IOException, ClassNotFoundException {
         if(!btnPartie1.getText().equals("Nouvelle Partie")){
-            //lecture du fichier texte
-            String chaine ="";
-            try{
-                InputStream ips=new FileInputStream(Constante.CHEMIN_SAUVEGARDES + btnPartie1.getText());
-                InputStreamReader ipsr=new InputStreamReader(ips);
-                BufferedReader br=new BufferedReader(ipsr);
-                String ligne;
-                while ((ligne=br.readLine())!=null){
-                    chaine += ligne;
-                }
-                br.close();
-                chargerCombat();
-            }
-            catch (Exception e){
-                System.out.println(e.toString());
-            }
+            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie2.getText()) ;
+
+            // ouverture d'un flux sur un fichier
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+
+
+            // désérialization de l'objet
+            Personnage temp=(Personnage) ois.readObject();
+            partie.setPersonnage(temp);
+            chargerCombat();
         }
         if(btnPartie1.getText().equals("Nouvelle Partie")){
 
@@ -95,37 +88,19 @@ public class ChoixSauvegardeController {
         }
     }
 
-    public void lancerPartie2() throws IOException {
-        if(!btnPartie2.getText().equals("Nouvelle Partie")){
-            //lecture du fichier texte
-            String chaine ="";
-            String chaine2 = "";
-            try{
-                InputStream ips=new FileInputStream(Constante.CHEMIN_SAUVEGARDES + btnPartie2.getText());
-                InputStreamReader ipsr=new InputStreamReader(ips);
-                BufferedReader br=new BufferedReader(ipsr);
-                String ligne;
-                String ligne2 = "";
+    public void lancerPartie2() throws IOException, ClassNotFoundException {
 
-                while ((ligne=br.readLine())!=null){
-                    chaine += ligne + '\n';
-                }
-                while((ligne=br.readLine())!="\n"){
-                    chaine2 = ligne;
-                }
-                for(String element : chaine.split("\n")){
-                    ligne = element;
-                }
-                for(String element : chaine2.split("-")){
-                    ligne2 = element;
-                }
-                System.out.println(ligne2);
-                br.close();
-                chargerCombat();
-            }
-            catch (Exception e){
-                System.out.println(e.toString());
-            }
+        if(!btnPartie2.getText().equals("Nouvelle Partie")){
+            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie2.getText()) ;
+
+            // ouverture d'un flux sur un fichier
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+
+
+            // désérialization de l'objet
+            Personnage temp=(Personnage) ois.readObject();
+            partie.setPersonnage(temp);
+            chargerCombat();
         }
         if(btnPartie2.getText().equals("Nouvelle Partie")){
             partie.setRoot(new AnchorPane());
@@ -143,25 +118,20 @@ public class ChoixSauvegardeController {
         }
     }
 
-    public void lancerPartie3() throws IOException {
+    public void lancerPartie3() throws IOException, ClassNotFoundException {
         if(!btnPartie3.getText().equals("Nouvelle Partie")){
-            //lecture du fichier texte
-            String chaine ="";
-            try{
-                InputStream ips=new FileInputStream(Constante.CHEMIN_SAUVEGARDES + btnPartie3.getText());
-                InputStreamReader ipsr=new InputStreamReader(ips);
-                BufferedReader br=new BufferedReader(ipsr);
-                String ligne;
-                while ((ligne=br.readLine())!=null){
-                    chaine += ligne;
-                }
-                br.close();
-                chargerCombat();
-            }
-            catch (Exception e){
-                System.out.println(e.toString());
-            }
+            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie2.getText()) ;
+
+            // ouverture d'un flux sur un fichier
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+
+
+            // désérialization de l'objet
+            Personnage temp=(Personnage) ois.readObject();
+            partie.setPersonnage(temp);
+            chargerCombat();
         }
+
         if(btnPartie3.getText().equals("Nouvelle Partie")){
             partie.setRoot(new AnchorPane());
             FXMLLoader loader = new FXMLLoader();
@@ -181,7 +151,7 @@ public class ChoixSauvegardeController {
 
     public void chargerCombat() throws IOException {
         //On charge la page d'après
-        FXMLLoader loader = new FXMLLoader();
+        /*FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
 
         partie.setRoot(loader.load());
@@ -191,7 +161,11 @@ public class ChoixSauvegardeController {
         combatCtrl.setPartie(partie);
 
         partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
-        partie.getPrimaryStage().show();
+        partie.getPrimaryStage().show();*/
+
+        CombatController combatController = new CombatController(partie);
+        combatController.launchCombatController(partie.getPrimaryStage());
+
     }
 
     public Partie getPartie() {

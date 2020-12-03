@@ -49,8 +49,8 @@ public class Partie extends Application{
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         launch(args);
-        Mage mage = new Mage();
-        Guerrier guerrier = new Guerrier(150.0, 30, 1, new ArrayList<Arme>(Arrays.asList(new Epee(),new Bouclier())));
+        /*Mage mage = new Mage();
+        Guerrier guerrier = new Guerrier("Paul",150, 30, 1, new ArrayList<Arme>(Arrays.asList(new Epee(),new Bouclier())));
         mage.attaqueBasique(guerrier);
         System.out.println("Le guerrier n'a plus que " + guerrier.getPtsDeVie() + " pts de vies");
         System.out.println("Le mage n'a plus que " + mage.getMana() + " pts de mana");
@@ -70,9 +70,9 @@ public class Partie extends Application{
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
         // création d'un objet à sérializer
 
-        Mage mage1 = new Mage(200, 200, 24, new ArrayList<Arme>());
+        Mage mage1 = new Mage("",200, 200, 24, new ArrayList<Arme>());
         Mage mage2 = new Mage();
-        Chasseur chas1 = new Chasseur(2000000, 200, 24, new ArrayList<Arme>(Arrays.asList(new Arc())));
+        Chasseur chas1 = new Chasseur("Jean",2000000, 200, 24, new ArrayList<Arme>(Arrays.asList(new Arc())));
         Chasseur chas2 = new Chasseur();
 
         // sérialization de l'objet
@@ -91,8 +91,27 @@ public class Partie extends Application{
         System.out.println("Guerrier 1 :" + guerrier.toString());
         System.out.println("Guerrier 2 :" + guer2.toString());
         System.out.println("Mage 2 : "+mage2.toString());
-        System.out.println("Chas 2 : "+ chas2.toString());
+        System.out.println("Chas 2 : "+ chas2.toString());*/
 
+
+
+
+        /*File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+"Oui") ;
+        ObjectOutputStream oos =  new ObjectOutputStream(new FileOutputStream(fichier)) ;
+        Personnage personnage1=new Mage("Oui");
+        oos.writeObject(personnage1);
+        oos.close();
+
+
+        // ouverture d'un flux sur un fichier
+
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
+
+
+        // désérialization de l'objet
+        Mage temp=(Mage) ois.readObject();
+        Personnage personnage2=temp;
+        System.out.println(personnage2);*/
 
 
     }
@@ -123,5 +142,9 @@ public class Partie extends Application{
 
     public Personnage getPersonnage(){
         return this.personnage;
+    }
+
+    public void setPersonnage(Personnage personnage){
+        this.personnage=personnage;
     }
 }

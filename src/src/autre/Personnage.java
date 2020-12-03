@@ -9,12 +9,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Personnage implements Serializable {
-    private double ptsDeVie;
+    private String nom;
+    private int ptsDeVie;
     private int mana;
     private int niveau;
     private ArrayList<Arme> listeArmes;
 
-    Personnage(double ptsDeVie, int mana, int niveau, ArrayList<Arme> listeArmes) {
+
+
+
+    Personnage(String nom,int ptsDeVie, int mana, int niveau, ArrayList<Arme> listeArmes) {
+        this.nom=nom;
         this.ptsDeVie = ptsDeVie;
         this.mana = mana;
         this.niveau = niveau;
@@ -113,11 +118,11 @@ public abstract class Personnage implements Serializable {
 
     public abstract void attaqueSpeciale(Personnage personnage);
 
-    public double getPtsDeVie() {
+    public int getPtsDeVie() {
         return this.ptsDeVie;
     }
 
-    public void setPtsDeVie(double ptsDeVie) {
+    public void setPtsDeVie(int ptsDeVie) {
         this.ptsDeVie = ptsDeVie;
     }
 
@@ -145,8 +150,12 @@ public abstract class Personnage implements Serializable {
         this.listeArmes = listeArmes;
     }
 
+    public String getNom(){return this.nom;}
+
+    public void setNom(String nom){this.nom=nom;}
+
     public  String toString() {
         StringBuffer sb =  new StringBuffer() ;
-        return sb.append(this.ptsDeVie).append(" ").append(this.mana).append(" ").append(this.niveau).append(" ").append(this.listeArmes).toString();
+        return sb.append(this.nom).append(" ").append(this.ptsDeVie).append(" ").append(this.mana).append(" ").append(this.niveau).append(" ").append(this.listeArmes).toString();
     }
 }
