@@ -61,7 +61,7 @@ public class ChoixSauvegardeController {
 
     public void lancerPartie1() throws IOException, ClassNotFoundException {
         if(!btnPartie1.getText().equals("Nouvelle Partie")){
-            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie2.getText()) ;
+            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie1.getText()) ;
 
             // ouverture d'un flux sur un fichier
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
@@ -121,7 +121,7 @@ public class ChoixSauvegardeController {
 
     public void lancerPartie3() throws IOException, ClassNotFoundException {
         if(!btnPartie3.getText().equals("Nouvelle Partie")){
-            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie2.getText()) ;
+            File fichier =  new File(Constante.CHEMIN_SAUVEGARDES+btnPartie3.getText()) ;
 
             // ouverture d'un flux sur un fichier
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichier));
