@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.InfoFichierSauvegarde;
 
 import java.io.File;
 import java.net.MalformedURLException;

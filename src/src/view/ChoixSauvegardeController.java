@@ -4,6 +4,7 @@ import autre.*;
 import constante.Constante;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -151,20 +152,43 @@ public class ChoixSauvegardeController {
 
     public void chargerCombat() throws IOException {
         //On charge la page d'après
-        /*FXMLLoader loader = new FXMLLoader();
+       /* FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
-
         partie.setRoot(loader.load());
+        System.out.println("tamere");
 
         CombatController combatCtrl = loader.getController();
 
         combatCtrl.setPartie(partie);
 
+
         partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
         partie.getPrimaryStage().show();*/
 
-        CombatController combatController = new CombatController(partie);
-        combatController.launchCombatController(partie.getPrimaryStage());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
+        CombatController combatCtrl = new CombatController(partie);
+        loader.setController(combatCtrl);
+        System.out.println(partie);
+        partie.setRoot(loader.load());
+
+
+
+        partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
+        partie.getPrimaryStage().show();
+
+
+        /*FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
+
+        CombatController controller = loader.<CombatController>getController();
+        controller.setPartie(partie);
+        loader.setController(controller);
+
+        Parent root = loader.load();*/
+
+        /*CombatController combatController = new CombatController(partie);
+        combatController.launchCombatController(partie.getPrimaryStage());*/
 
     }
 

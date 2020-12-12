@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="720.0"  prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <GridPane layoutX="344.0" prefHeight="720.0" prefWidth="936.0">
+        <GridPane layoutX="344.0" prefHeight="720.0" prefWidth="936.0" >
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="691.0" minWidth="10.0" prefWidth="399.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="691.0" minWidth="10.0" prefWidth="152.0" />
@@ -71,19 +71,19 @@
                 </AnchorPane>
                 <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <Button fx:id="btnAttaquePhysique" mnemonicParsing="false" text="Attaque Physique">
+                        <Button fx:id="btnAttaqueBasique" mnemonicParsing="false" onAction="#attaqueBasique" text="Attaque Basique">
                             <VBox.margin>
                                 <Insets bottom="20.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="btnAttaqueSort" mnemonicParsing="false" text="Attaque Magique">
+                        <Button fx:id="btnAttaqueSpéciale" mnemonicParsing="false" onAction="#attaqueSpéciale" text="Attaque Spéciale">
                             <VBox.margin>
                                 <Insets bottom="20.0" />
                             </VBox.margin></Button>
-                        <Button fx:id="btnPasserTour" mnemonicParsing="false" text="Passer son tour" />
+                        <Button fx:id="btnAbandonner" mnemonicParsing="false" onAction="#giveUp" text="Passer son tour" />
                     </children>
                 </VBox>
-                <GridPane GridPane.rowIndex="1">
+                <GridPane GridPane.rowIndex="2">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="157.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="43.0" />
@@ -103,6 +103,8 @@
                         <Label fx:id="nomPerso" text="Label" />
                     </children>
                 </GridPane>
+
+                  <ImageView fx:id="imgPersoDos" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
             </children>
         </GridPane>
         <VBox alignment="TOP_CENTER" layoutX="7.0" prefHeight="720.0" prefWidth="330.0">
@@ -113,8 +115,6 @@
                     </font></Label>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="682.0" prefWidth="330.0">
                     <children>
-
-                        <ImageView fx:id="imgPersoDos" fitHeight="150.0" fitWidth="200.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
 
                         <TextArea fx:id="txtArearHistoriqueCombat" disable="true" layoutX="-8.0" prefHeight="675.0" prefWidth="337.0" />
                     </children>

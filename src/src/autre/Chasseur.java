@@ -25,7 +25,7 @@ public class Chasseur extends Personnage {
         //VERIF ARC
         if(personnage.rangArc()>=0){
 
-                Arc arc = (Arc) personnage.getListeArmes().get(personnage.rangArc());
+            Arc arc = (Arc) personnage.getListeArmes().get(personnage.rangArc());
             if(arc.getNbFleches()>0) {
 
                 //VERIF BOUCLIER

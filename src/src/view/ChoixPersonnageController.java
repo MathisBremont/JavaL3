@@ -5,6 +5,7 @@ import constante.Constante;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -155,8 +156,24 @@ public class ChoixPersonnageController {
                 }
 
 
-                CombatController combatController = new CombatController(partie);
-                combatController.launchCombatController(partie.getPrimaryStage());
+                /*CombatController combatController = new CombatController(partie);
+                combatController.launchCombatController(partie.getPrimaryStage());*/
+
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
+                CombatController combatCtrl = new CombatController(partie);
+                loader.setController(combatCtrl);
+
+                partie.setRoot(loader.load());
+                System.out.println("tamere");
+
+
+
+
+                partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
+                partie.getPrimaryStage().show();
+
                 //On charge la page d'après
                 /*FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(Partie.class.getResource("/view/Combat.fxml"));
@@ -166,10 +183,14 @@ public class ChoixPersonnageController {
                 CombatController combatCtrl = loader.getController();
 
 
-                combatCtrl.setPartie(partie);
+                combatCtrl.setData(partie);
 
                 partie.getPrimaryStage().setScene(new Scene(partie.getRoot(), 1280, 720));
                 partie.getPrimaryStage().show();*/
+
+
+
+
                 /*DateFormat format = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
                 Date date = new Date();
 

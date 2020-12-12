@@ -1,23 +1,28 @@
 package view;
 
 import autre.*;
+import com.sun.jdi.DoubleValue;
 import constante.Constante;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.InfoFichierSauvegarde;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javafx.scene.control.Button;
 
 public class CombatController {
     private Parent parent;
@@ -25,6 +30,9 @@ public class CombatController {
     private InfoFichierSauvegarde infoFichierSauvegarde;
     private Stage stage;
     private Scene scene;
+
+    private Personnage perso;
+    private Personnage adversaire;
 
     @FXML
     private ImageView imgPersoDos;
@@ -36,6 +44,12 @@ public class CombatController {
     private ProgressBar ptsManaPerso;
 
     @FXML
+    private ProgressBar ptsVieAdvers;
+
+    @FXML
+    private ProgressBar ptsManaAdvers;
+
+    @FXML
     private Label lvlPerso;
 
     @FXML
@@ -44,33 +58,46 @@ public class CombatController {
     @FXML
     private Label nomPerso;
 
+
+
     @FXML
-    private AfficherPersoController AfficherPersoConfig;
+    private Button btnAttaqueBasique;
 
-    public CombatController(Partie partie) throws MalformedURLException {
-        this.partie = partie;
-        this.lvlPerso=new Label();
-        this.armePerso=new Label();
-        this.imgPersoDos=new ImageView();
-        this.nomPerso=new Label();
+    @FXML
+    private Button btnAttaqueSpéciale;
+
+    @FXML
+    private Button btnAbandonner;
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Combat.fxml"));
-        fxmlLoader.setController(this);
-        try {
-            parent = (Parent) fxmlLoader.load();
-            scene = new Scene(parent, 1280, 720);
+    public void initialize() throws MalformedURLException {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        this.nomPerso.setText(partie.getPersonnage().getNom());
+
+        this.partie=partie;
+        System.out.println(partie.getPersonnage().getNom());
+        this.nomPerso.setText("pd");
         this.lvlPerso.setText(String.valueOf(partie.getPersonnage().getNiveau()));
         System.out.println(partie.getPersonnage().getNiveau());
         System.out.println(partie.getPersonnage().getListeArmes());
         this.armePerso.setText(String.valueOf(partie.getPersonnage().getListeArmes()));
         this.imgPersoDos.setImage(new Image((new File(Constante.CHEMIN_IMAGES + "archer.png")).toURI().toURL().toString()));
+        adversaire = genererAdversaire(this.getPartie().getPersonnage().getNiveau());
+
+        ptsViePerso = new ProgressBar();
+        ptsManaPerso = new ProgressBar();
+
+
     }
+
+
+    public CombatController(Partie partie) throws MalformedURLException {
+        this.partie = partie;
+        this.perso=partie.getPersonnage();
+
+    }
+
+
+
 
     public Partie getPartie() {
         return partie;
@@ -80,17 +107,49 @@ public class CombatController {
         this.partie = partie;
     }
 
+    public void setNomPerso(String nomPerso){
+        this.nomPerso.setText(nomPerso);
+        System.out.println("ui");
+    }
+
     public void setInfoFichierSauvegarde(InfoFichierSauvegarde infoFichierSauvegarde) {
     }
 
     public void launchCombatController(Stage stage) {
-        this.stage = stage;
-        stage.setTitle("User Login");
 
-        stage.setScene(scene);
-        stage.setResizable(true);
-        stage.hide();
-        stage.show();
+
+
+        adversaire = genererAdversaire(this.getPartie().getPersonnage().getNiveau());
+
+        while(adversaire.getPtsDeVie()>0 && perso.getPtsDeVie()>0){
+
+        }
+
+
+    }
+
+
+
+
+    @FXML
+    public void attaqueBasique(ActionEvent event) {
+
+        this.perso.attaqueBasique(adversaire);
+        System.out.println(perso.getNom());
+        ptsManaPerso.setProgress(perso.getMana());
+
+        ptsVieAdvers.setProgress((adversaire.getPtsDeVie()));
+    }
+
+    @FXML
+    public void attaqueSpéciale(ActionEvent event){
+        this.perso.attaqueBasique(adversaire);
+
+    }
+
+    @FXML
+    public void giveUp(ActionEvent event){
+
     }
 
 
@@ -99,7 +158,7 @@ public class CombatController {
         switch (niveau){
             case 1:
 
-                return new Mage("Grutendre",100,100,1,new ArrayList<Arme>(null));
+                return new Mage("Grutendre",100,100,1,new ArrayList<Arme>(Arrays.asList()));
             case 2:
                 return new Mage("Grutendre",100,100,1,new ArrayList<Arme>(null));
 
@@ -126,7 +185,7 @@ public class CombatController {
 
             case 10:
                 return new Mage("Grutendre",100,100,1,new ArrayList<Arme>(null));
-               
+
             default:
                 return null;
 
